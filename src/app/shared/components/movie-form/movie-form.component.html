@@ -26,7 +26,7 @@
                <div class="col-10">
                     <input type="text" class="form-control mb-2" [formControlName]="i">
                </div>
-               <div class="col-2">
+               <div class="col-2" *ngIf="i > 0">
                     <button type="button" (click)="removeCast(i)" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
                </div>
            </div>
