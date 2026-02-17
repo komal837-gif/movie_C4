@@ -4,7 +4,14 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let movie of movieArr">
-        <app-movie-card [movieObj]="movie"></app-movie-card>
-    </div>
+    <ng-container *ngIf="movieArr.length > 0;else nomovie">
+        <div class="col-md-4 mb-4" *ngFor="let movie of movieArr">
+          <app-movie-card [movieObj]="movie"></app-movie-card>
+         </div>
+    </ng-container>
+    <ng-template #nomovie>
+        <p>
+            No Movies Available!!
+        </p>
+    </ng-template>
 </div>
