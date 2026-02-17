@@ -38,7 +38,9 @@ export class MovieFormComponent implements OnInit {
   }
 
   addCast(){
-    this.cast.push(new FormControl(""))
+    if(this.cast.valid){
+      this.cast.push(new FormControl(""))
+    }
   }
 
   removeCast(index:number){
@@ -50,7 +52,9 @@ export class MovieFormComponent implements OnInit {
   }
 
   addGenere(){
-    this.genre.push(new FormControl(""))
+   if(this.genre.valid){
+     this.genre.push(new FormControl(""))
+   }
   }
 
   removeGenre(index:number){
@@ -62,6 +66,11 @@ export class MovieFormComponent implements OnInit {
     let movieObj = this.movieForm.value;
     this.movieService.createMovie(movieObj).subscribe(res=>{
     this.movieForm.reset()
+    this.cast.clear()
+    this.genre.clear()
+
+    this.addCast()
+    this.addGenere()
     this.movieService.newMovie({...movieObj,id:res})
     })
   }
