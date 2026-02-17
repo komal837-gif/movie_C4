@@ -1,0 +1,29 @@
+
+figure{
+    height:250px;
+    overflow: hidden;
+    position:relative;
+}
+
+img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+figcaption{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+    padding:15px;
+    opacity:0;
+    color: #fff;
+    transition: all .4s ease-in-out;
+}
+
+figure:hover figcaption{
+    opacity: 1;
+}

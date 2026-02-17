@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header">
+        <h2>{{movieObj.title}}</h2>
+    </div>
+    <figure>
+        <img [src]="movieObj.poster" alt="">
+        <figCaption>
+            <h2>{{movieObj.title}}</h2>
+            <span>director: {{movieObj.director}}</span><br>
+            <span>year: {{movieObj.year}}</span><br>
+            <span>{{movieObj.cast}}</span><br>
+            <span>{{movieObj.genre}}</span>
+        </figCaption>
+    </figure>
+    <div class="card-footer d-flex justify-content-between align-items-center">
+        <button (click)="onEdit(movieObj)" mat-raised-button color="primary">Edit</button>
+        <button (click)="onRemove(movieObj)" mat-raised-button color="warn">Delete</button>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<h2 class="text-center bg-light">{{isInEditMode? 'Update Movie' : 'Add Movie'}}</h2>
+<form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="title">title<sup>*</sup></label>
+        <input type="text" class="form-control" formControlName="title">
+    </div>
+     <div class="form-group">
+        <label for="director">director<sup>*</sup></label>
+        <input type="text" class="form-control" formControlName="director">
+    </div>
+     <div class="form-group">
+        <label for="year">year<sup>*</sup></label>
+        <input type="text" class="form-control" formControlName="year">
+    </div>
+     <div class="form-group">
+        <label for="poster">poster<sup>*</sup></label>
+        <input type="text" class="form-control" formControlName="poster">
+    </div>
+     <div class="form-group">
+        <label for="rating">rating<sup>*</sup></label>
+        <input type="text" class="form-control" formControlName="rating">
+    </div>
+    <div formArrayName="cast">
+        <div *ngFor="let c of cast.controls; let i = index">
+           <div class="row">
+               <div class="col-10">
+                    <input type="text" class="form-control mb-2" [formControlName]="i">
+               </div>
+               <div class="col-2">
+                    <button (click)="removeCast(i)" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+               </div>
+           </div>
+        </div>
+        <button (click)="addCast()" mat-raised-button color="primary" class="my-2">Add Cast</button>
+    </div>
+
+    <div formArrayName="genre">
+        <div *ngFor="let g of genre.controls;let i = index">
+            <div class="row">
+                <div class="col-10">
+                    <input type="text" class="form-control mb-2" [formControlName]="i">
+                </div>
+                <div class="col-2">
+                    <button (click)="removeGenre(i)" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+                </div>
+            </div>
+        </div>
+        <button (click)="addGenere()" mat-raised-button color="primary" class="my-2">Add genre</button>
+    </div>
+
+    <button class="btn btn-block" *ngIf="!isInEditMode" mat-raised-button color="primary">Add Movie</button>
+    <button (click)="onUpdate()" class="btn btn-block" *ngIf="isInEditMode" mat-raised-button color="accent">Update Movie</button>
+</form>
